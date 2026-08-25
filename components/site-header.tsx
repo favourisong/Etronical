@@ -3,6 +3,30 @@
 import { useEffect, useState } from "react"
 import { Sun, Menu, X } from "lucide-react"
 
+function FacebookIcon() {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true" className="h-4 w-4 fill-current">
+      <path d="M13.5 22v-8h2.7l.4-3.2h-3.1V7.4c0-.9.3-1.6 1.7-1.6H17V2.8c-.3 0-1.3-.1-2.5-.1-2.5 0-4.2 1.5-4.2 4.3v2.4H8v3.2h2.3v8h3.2Z" />
+    </svg>
+  )
+}
+
+function InstagramIcon() {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true" className="h-4 w-4 fill-current">
+      <path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7Zm5 3.2A4.8 4.8 0 1 1 7.2 12 4.8 4.8 0 0 1 12 7.2Zm0 2A2.8 2.8 0 1 0 14.8 12 2.8 2.8 0 0 0 12 9.2Zm5-3.2a1.2 1.2 0 1 1-1.2 1.2A1.2 1.2 0 0 1 17 6Z" />
+    </svg>
+  )
+}
+
+function XIcon() {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true" className="h-4 w-4 fill-current">
+      <path d="M18.9 2h3.7l-8.1 9.3L22.8 22h-7.3l-5.7-8.2L3.6 22H-.1l8.7-10L.8 2h7.5l5.2 7.6L18.9 2Zm-1.3 18h2l-12.7-18h-2.1L17.6 20Z" />
+    </svg>
+  )
+}
+
 const navLinks = [
   { label: "Projects", href: "#projects" },
   { label: "What we do", href: "#services" },
@@ -54,12 +78,33 @@ export function SiteHeader() {
           ))}
         </nav>
 
-        <div className="hidden md:block">
+        <div className="hidden items-center gap-3 md:flex">
           <a
-            href="/contact"
-            className="inline-flex items-center rounded-full bg-foreground px-5 py-2 text-sm font-semibold text-background transition-opacity hover:opacity-90"
+            href="https://facebook.com"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="Facebook"
+            className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-border bg-card text-muted-foreground transition-colors hover:border-primary hover:text-foreground"
           >
-            Partner with us
+            <FacebookIcon />
+          </a>
+          <a
+            href="https://instagram.com"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="Instagram"
+            className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-border bg-card text-muted-foreground transition-colors hover:border-primary hover:text-foreground"
+          >
+            <InstagramIcon />
+          </a>
+          <a
+            href="https://twitter.com"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="Twitter"
+            className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-border bg-card text-muted-foreground transition-colors hover:border-primary hover:text-foreground"
+          >
+            <XIcon />
           </a>
         </div>
 
@@ -87,13 +132,38 @@ export function SiteHeader() {
                 {link.label}
               </a>
             ))}
-            <a
-              href="/contact"
-              onClick={() => setOpen(false)}
-              className="mt-2 inline-flex items-center justify-center rounded-full bg-foreground px-5 py-2.5 text-sm font-semibold text-background"
-            >
-              Partner with us
-            </a>
+            <div className="mt-3 flex items-center gap-3">
+              <a
+                href="https://facebook.com"
+                target="_blank"
+                rel="noreferrer"
+                aria-label="Facebook"
+                onClick={() => setOpen(false)}
+                className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-border bg-card text-muted-foreground"
+              >
+                <FacebookIcon />
+              </a>
+              <a
+                href="https://instagram.com"
+                target="_blank"
+                rel="noreferrer"
+                aria-label="Instagram"
+                onClick={() => setOpen(false)}
+                className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-border bg-card text-muted-foreground"
+              >
+                <InstagramIcon />
+              </a>
+              <a
+                href="https://twitter.com"
+                target="_blank"
+                rel="noreferrer"
+                aria-label="Twitter"
+                onClick={() => setOpen(false)}
+                className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-border bg-card text-muted-foreground"
+              >
+                <XIcon />
+              </a>
+            </div>
           </nav>
         </div>
       )}
