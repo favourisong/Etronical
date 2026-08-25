@@ -3,6 +3,30 @@
 import { useState } from "react"
 import { Sun, ArrowRight, Check } from "lucide-react"
 
+function FacebookIcon() {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true" className="h-4 w-4 fill-current">
+      <path d="M13.5 22v-8h2.7l.4-3.2h-3.1V7.4c0-.9.3-1.6 1.7-1.6H17V2.8c-.3 0-1.3-.1-2.5-.1-2.5 0-4.2 1.5-4.2 4.3v2.4H8v3.2h2.3v8h3.2Z" />
+    </svg>
+  )
+}
+
+function InstagramIcon() {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true" className="h-4 w-4 fill-current">
+      <path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7Zm5 3.2A4.8 4.8 0 1 1 7.2 12 4.8 4.8 0 0 1 12 7.2Zm0 2A2.8 2.8 0 1 0 14.8 12 2.8 2.8 0 0 0 12 9.2Zm5-3.2a1.2 1.2 0 1 1-1.2 1.2A1.2 1.2 0 0 1 17 6Z" />
+    </svg>
+  )
+}
+
+function XIcon() {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true" className="h-4 w-4 fill-current">
+      <path d="M18.9 2h3.7l-8.1 9.3L22.8 22h-7.3l-5.7-8.2L3.6 22H-.1l8.7-10L.8 2h7.5l5.2 7.6L18.9 2Zm-1.3 18h2l-12.7-18h-2.1L17.6 20Z" />
+    </svg>
+  )
+}
+
 export function CtaFooter() {
   const [submitted, setSubmitted] = useState(false)
   const [email, setEmail] = useState("")
@@ -83,26 +107,62 @@ Technology, energy, and engineering solutions that keep your systems running eff
 
             <FooterCol
               title="Company"
-              links={["About", "Careers", "Press", "Contact"]}
+              links={[
+                { label: "About", href: "#" },
+                { label: "Careers", href: "#" },
+                { label: "Press", href: "#" },
+                { label: "Contact", href: "/contact" },
+              ]}
             />
             <FooterCol
               title="Projects"
-              links={["Solar", "Wind", "Storage", "Portfolio"]}
+              links={[
+                { label: "Solar", href: "#" },
+                { label: "Wind", href: "#" },
+                { label: "Storage", href: "#" },
+                { label: "Portfolio", href: "#" },
+              ]}
             />
             <FooterCol
               title="Resources"
-              links={["Insights", "Reports", "Investors", "Sustainability"]}
+              links={[
+                { label: "Insights", href: "#" },
+                { label: "Reports", href: "#" },
+                { label: "Investors", href: "#" },
+                { label: "Sustainability", href: "#" },
+              ]}
             />
           </div>
 
           <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-border pt-8 text-sm text-muted-foreground sm:flex-row">
             <p>© {new Date().getFullYear()} Etronical Global Limited. All rights reserved.</p>
-            <div className="flex gap-6">
-              <a href="#" className="hover:text-foreground">
-                Privacy
+            <div className="flex items-center gap-3">
+              <a
+                href="https://facebook.com"
+                target="_blank"
+                rel="noreferrer"
+                aria-label="Facebook"
+                className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-border bg-card text-muted-foreground transition-colors hover:border-primary hover:text-foreground"
+              >
+                <FacebookIcon />
               </a>
-              <a href="#" className="hover:text-foreground">
-                Terms
+              <a
+                href="https://instagram.com"
+                target="_blank"
+                rel="noreferrer"
+                aria-label="Instagram"
+                className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-border bg-card text-muted-foreground transition-colors hover:border-primary hover:text-foreground"
+              >
+                <InstagramIcon />
+              </a>
+              <a
+                href="https://twitter.com"
+                target="_blank"
+                rel="noreferrer"
+                aria-label="Twitter"
+                className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-border bg-card text-muted-foreground transition-colors hover:border-primary hover:text-foreground"
+              >
+                <XIcon />
               </a>
             </div>
           </div>
@@ -112,18 +172,18 @@ Technology, energy, and engineering solutions that keep your systems running eff
   )
 }
 
-function FooterCol({ title, links }: { title: string; links: string[] }) {
+function FooterCol({ title, links }: { title: string; links: { label: string; href: string }[] }) {
   return (
     <div>
       <h3 className="text-sm font-semibold text-foreground">{title}</h3>
       <ul className="mt-4 space-y-3">
         {links.map((link) => (
-          <li key={link}>
+          <li key={link.label}>
             <a
-              href="#"
+              href={link.href}
               className="text-sm text-muted-foreground transition-colors hover:text-foreground"
             >
-              {link}
+              {link.label}
             </a>
           </li>
         ))}

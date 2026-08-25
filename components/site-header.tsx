@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { Sun, Menu, X } from "lucide-react"
 
 const navLinks = [
@@ -8,13 +8,30 @@ const navLinks = [
   { label: "What we do", href: "#services" },
   { label: "Process", href: "#process" },
   { label: "Impact", href: "#impact" },
+  { label: "Contact", href: "/contact" },
 ]
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false)
+  const [isAtTop, setIsAtTop] = useState(true)
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsAtTop(window.scrollY <= 12)
+    }
+
+    handleScroll()
+    window.addEventListener("scroll", handleScroll, { passive: true })
+
+    return () => window.removeEventListener("scroll", handleScroll)
+  }, [])
 
   return (
-    <header className="sticky top-0 z-50 border-b border-border/60 bg-background/80 backdrop-blur-md">
+    <header
+      className={`sticky top-0 z-50 border-b border-border/60 bg-background/80 backdrop-blur-md transition-all duration-300 ${
+        isAtTop ? "translate-y-0 opacity-100" : "-translate-y-full opacity-0 pointer-events-none"
+      }`}
+    >
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         <a href="#top" className="flex items-center gap-2">
           <span className="flex h-8 w-8 items-center justify-center rounded-md bg-primary text-primary-foreground">
@@ -39,7 +56,7 @@ export function SiteHeader() {
 
         <div className="hidden md:block">
           <a
-            href="#contact"
+            href="/contact"
             className="inline-flex items-center rounded-full bg-foreground px-5 py-2 text-sm font-semibold text-background transition-opacity hover:opacity-90"
           >
             Partner with us
@@ -71,7 +88,7 @@ export function SiteHeader() {
               </a>
             ))}
             <a
-              href="#contact"
+              href="/contact"
               onClick={() => setOpen(false)}
               className="mt-2 inline-flex items-center justify-center rounded-full bg-foreground px-5 py-2.5 text-sm font-semibold text-background"
             >
