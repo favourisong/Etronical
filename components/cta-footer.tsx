@@ -3,6 +3,8 @@
 import { useState } from "react"
 import { Sun, ArrowRight, Check } from "lucide-react"
 
+const siteRoot = process.env.NODE_ENV === "production" ? "/Etronical" : ""
+
 function FacebookIcon() {
   return (
     <svg viewBox="0 0 24 24" aria-hidden="true" className="h-4 w-4 fill-current">
@@ -111,7 +113,7 @@ Technology, energy, and engineering solutions that keep your systems running eff
                 { label: "About", href: "#" },
                 { label: "Careers", href: "#" },
                 { label: "Press", href: "#" },
-                { label: "Contact", href: "/contact" },
+                { label: "Contact", href: `${siteRoot}/contact` },
               ]}
             />
             <FooterCol

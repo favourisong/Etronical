@@ -1,5 +1,6 @@
 import { ArrowRight, Zap } from "lucide-react"
 
+const siteRoot = process.env.NODE_ENV === "production" ? "/Etronical" : ""
 const heroVideo = new URL(
   "../assets/mixkit-residential-solar-panels-22486-hd-ready.mp4",
   import.meta.url,
@@ -44,7 +45,7 @@ export function Hero() {
 
           <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <a
-              href="/contact"
+              href={`${siteRoot}/contact`}
               className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#f7b267] px-7 py-3.5 text-sm font-semibold text-[#17130f] transition-transform hover:-translate-y-0.5 sm:w-auto"
             >
               Start a project

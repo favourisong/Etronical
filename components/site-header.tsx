@@ -27,12 +27,14 @@ function XIcon() {
   )
 }
 
+const siteRoot = process.env.NODE_ENV === "production" ? "/Etronical" : ""
+
 const navLinks = [
   { label: "Projects", href: "#projects" },
   { label: "What we do", href: "#services" },
   { label: "Process", href: "#process" },
   { label: "Impact", href: "#impact" },
-  { label: "Contact", href: "/contact" },
+  { label: "Contact", href: `${siteRoot}/contact` },
 ]
 
 export function SiteHeader() {
